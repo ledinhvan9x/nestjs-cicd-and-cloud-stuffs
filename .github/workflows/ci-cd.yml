@@ -36,7 +36,7 @@ jobs:
     needs: ci
     if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
-    environment: staging
+    environment: RENDER_STAGING_HOOK
     steps:
       - run: curl -X POST ${{ secrets.RENDER_STAGING_HOOK }}
 
@@ -44,6 +44,6 @@ jobs:
     needs: ci
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: main
+    environment: RENDER_PROD_HOOK
     steps:
       - run: curl -X POST ${{ secrets.RENDER_PROD_HOOK }}
