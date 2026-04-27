@@ -2,9 +2,9 @@ name: NestJS CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   pull_request:
-    branches: [main]
+    branches: [main, staging]
 
 jobs:
   ci:
@@ -32,11 +32,18 @@ jobs:
       - name: Build project
         run: npm run build
 
-  cd:
+  deploy-staging:
     needs: ci
+    if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
+    environment: RENDER_STAGING_HOOK
     steps:
-      - name: Deploy to Render
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+      - run: curl -X POST ${{ secrets.RENDER_STAGING_HOOK }}
+
+  deploy-prod:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: RENDER_PROD_HOOK
+    steps:
+      - run: curl -X POST ${{ secrets.RENDER_PROD_HOOK }}
