@@ -1,4 +1,4 @@
-name: NestJS CI
+name: NestJS CI CD
 
 on:
   push:
