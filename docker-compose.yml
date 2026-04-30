@@ -2,14 +2,17 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '3005:3005'
+      - '4005:3000'
     env_file:
       - .env
     depends_on:
       - db
-
+    volumes:
+      - ./src:/app/src
   db:
     image: postgres:15
     restart: always
