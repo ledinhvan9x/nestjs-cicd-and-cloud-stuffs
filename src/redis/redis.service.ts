@@ -32,4 +32,12 @@ export class RedisService implements OnModuleInit {
   async setWithTtl(key: string, value: string, seconds: number) {
     return this.redis.set(key, value, 'EX', seconds);
   }
+
+  async incr(key: string) {
+    return this.redis.incr(key);
+  }
+
+  async expire(key: string, seconds: number) {
+    return this.redis.expire(key, seconds);
+  }
 }
