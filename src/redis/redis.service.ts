@@ -9,6 +9,11 @@ export class RedisService implements OnModuleInit {
     this.redis = new Redis({
       host: process.env.REDIS_HOST,
       port: Number(process.env.REDIS_PORT),
+      ...(process.env.NODE_ENV !== 'development' && {
+        username: process.env.REDIS_USERNAME,
+        password: process.env.REDIS_PASSWORD,
+        tls: {},
+      }),
     });
   }
 
