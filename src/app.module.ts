@@ -20,6 +20,10 @@ import { UsersModule } from './users/users.module';
       database: process.env.POSTGRES_DB,
       autoLoadEntities: true,
       synchronize: true,
+      ssl:
+        process.env.NODE_ENV !== 'development'
+          ? { rejectUnauthorized: false }
+          : false,
     }),
     RedisModule,
     UsersModule,
