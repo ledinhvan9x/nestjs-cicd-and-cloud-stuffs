@@ -12,6 +12,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 import { CorsMiddleware } from './middlewares/cors.middleware';
+import { QueueModule } from './queues/queues.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { CorsMiddleware } from './middlewares/cors.middleware';
     }),
     RedisModule,
     UsersModule,
+    QueueModule,
   ],
   controllers: [AppController],
   providers: [
