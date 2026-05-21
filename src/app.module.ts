@@ -10,6 +10,7 @@ import { HealthCron } from './cron/health.cron';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
+import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 
 @Module({
   imports: [
@@ -45,6 +46,10 @@ import { TransformInterceptor } from './interceptors/transform.interceptor';
     {
       provide: APP_INTERCEPTOR,
       useClass: TransformInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TimeoutInterceptor,
     },
   ],
 })
