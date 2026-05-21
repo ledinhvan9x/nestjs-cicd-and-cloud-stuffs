@@ -1,5 +1,5 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { RedisService } from 'src/redis/redis.service';
+import { RedisService } from '@app/redis/redis.service';
 
 @Injectable()
 export class RateLimitGuard implements CanActivate {
