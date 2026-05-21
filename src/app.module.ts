@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { HealthCron } from './cron/health.cron';
+import { LoggerInterceptor } from './interceptors/logger.interceptor';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -32,6 +34,13 @@ import { HealthCron } from './cron/health.cron';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, HealthCron],
+  providers: [
+    AppService,
+    HealthCron,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggerInterceptor,
+    },
+  ],
 })
 export class AppModule {}
