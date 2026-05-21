@@ -9,6 +9,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { HealthCron } from './cron/health.cron';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { TransformInterceptor } from './interceptors/transform.interceptor';
 
 @Module({
   imports: [
@@ -40,6 +41,10 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggerInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TransformInterceptor,
     },
   ],
 })
