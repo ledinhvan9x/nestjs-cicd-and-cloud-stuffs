@@ -16,7 +16,9 @@ export class CorsMiddleware implements NestMiddleware {
 
     const origin = (Array.isArray(origins) ? origins[0] : origins) || '';
 
-    const allowedOrigins = [process.env.FRONTEND_URL].filter(Boolean);
+    const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
+      .split(',')
+      .filter(Boolean);
 
     const isDev = process.env.NODE_ENV === 'development';
 
