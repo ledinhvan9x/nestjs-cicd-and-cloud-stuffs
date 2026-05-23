@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
-import { RedisService } from '../redis/redis.service';
+import { RedisService } from '@app/redis/redis.service';
 
 describe('UsersService', () => {
   let service: UsersService;

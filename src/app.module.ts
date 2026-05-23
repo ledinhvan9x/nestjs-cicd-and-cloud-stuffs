@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { RedisModule } from './redis/redis.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './modules/users/users.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { HealthCron } from './cron/health.cron';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
