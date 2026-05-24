@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'nestjs'
+
+    static_configs:
+      - targets:
+          - app1:3003
+          - app2:3003
