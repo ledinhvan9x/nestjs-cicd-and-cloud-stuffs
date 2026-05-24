@@ -19,6 +19,7 @@ services:
     volumes:
       - ./src:/app/src
     command: npm run start:dev
+    restart: unless-stopped
 
   app2:
     build:
@@ -38,6 +39,7 @@ services:
     volumes:
       - ./src:/app/src
     command: npm run start:dev
+    restart: unless-stopped
 
   db:
     image: postgres:15
