@@ -13,6 +13,7 @@ import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 import { CorsMiddleware } from './middlewares/cors.middleware';
 import { QueueModule } from './queues/queues.module';
+import { MetricsModule } from './metrics/metrics.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { QueueModule } from './queues/queues.module';
     RedisModule,
     UsersModule,
     QueueModule,
+    MetricsModule,
   ],
   controllers: [AppController],
   providers: [
