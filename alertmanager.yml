@@ -10,7 +10,7 @@ route:
 receivers:
   - name: 'slack-notifications'
     slack_configs:
-      - api_url: ""
+      - api_url: 'https://hooks.slack.com/services/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'
         channel: '#grafana-notification'
         send_resolved: true
         text: |
