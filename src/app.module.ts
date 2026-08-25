@@ -58,6 +58,7 @@ import { MetricsModule } from './metrics/metrics.module';
     },
   ],
 })
+  
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(CorsMiddleware).forRoutes('*');
