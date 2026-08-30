@@ -15,6 +15,8 @@ import { TestQueueService } from './test.service';
         backoff: {
           type: 'exponential',
           delay: 1000,
+        removeOnFail: 1000, // default false (mean keep all msgs) => keep 1000 latest
+        removeOnComplete: 1000, // default false (mean keep all msgs) => keep 1000 latest
     },
   },
     }),
