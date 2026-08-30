@@ -10,6 +10,13 @@ import { TestQueueService } from './test.service';
     QueueProvider,
     BullModule.registerQueue({
       name: 'test-queue',
+      defaultJobOptions: {
+        attempts: 3,
+        backoff: {
+          type: 'exponential',
+          delay: 1000,
+    },
+  },
     }),
   ],
   controllers: [TestQueueController],
