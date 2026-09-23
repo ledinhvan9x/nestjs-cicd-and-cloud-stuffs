@@ -9,7 +9,7 @@ export class OutboxWorker {
   constructor(
     private readonly outboxService: OutboxService,
 
-    @InjectQueue('your-queue-name')
+    @InjectQueue('test-outbox')
     private readonly queue: Queue,
   ) {}
 
