@@ -16,8 +16,20 @@ export class OutboxEvent {
   @Column({ type: 'jsonb' })
   payload: Record<string, any>;
 
-  @Column({ default: false })
-  processed: boolean;
+  @Column({ default: 'PENDING' })
+  status: 'PENDING' | 'PROCESSED' | 'FAILED';
+
+  @Column({ default: 0 })
+  attempts: number;
+
+  @Column({ type: 'timestamp', nullable: true })
+  nextRetryAt: Date | null;
+
+  @Column({ type: 'text', nullable: true })
+  lastError: string | null;
+
+  @Column({ type: 'timestamp', nullable: true })
+  processedAt: Date | null;
 
   @CreateDateColumn()
   createdAt: Date;
