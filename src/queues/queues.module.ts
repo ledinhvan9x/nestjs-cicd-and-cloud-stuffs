@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import QueueProvider from './queue.provider';
 import { BullModule } from '@nestjs/bull';
 import { TestProcessor } from './processors/test.processor';
-import { TestQueueController } from './test.cotroller';
+import { TestQueueController } from './test.controller';
 import { TestQueueService } from './test.service';
 
 @Module({
